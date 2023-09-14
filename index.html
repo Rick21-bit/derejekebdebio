@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Dereje Kebede - Ethiopian Gospel Music</title>
+  <meta name="description" content="Biography, discography and lyrics links for Dr. Dereje Kebede, Ethiopian gospel singer." />
+  <meta property="og:title" content="Dr. Dereje Kebede - Ethiopian Gospel Music" />
+  <meta property="og:description" content="Biography, albums and lyrics for Dr. Dereje Kebede." />
+  <link rel="canonical" href="https://rick21-bit.github.io/2023-derejekebdebio/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="hero">
+      <div class="hero-content">
+        <h1>ዶ/ር ደረጀ ከበደ</h1>
+        <p class="subtitle">Dr. Dereje Kebede - Ethiopian Gospel Music</p>
+        <p class="intro">His songs became my favorite music in this season. The melodies and lyrics remind me that faith and hope can carry anyone through hard times.</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="bio">
+        <h2>Biography</h2>
+        <p v-for="p in bio" :key="p">{{ p }}</p>
+      </section>
+
+      <section class="discography">
+        <h2>Albums</h2>
+        <div class="album" v-for="album in albums" :key="album.title">
+          <h3>{{ album.amharic }} <span class="en">{{ album.title }}</span></h3>
+          <ul>
+            <li v-for="song in album.songs" :key="song">
+              {{ song }}
+            </li>
+          </ul>
+          <a class="lyrics-link" :href="album.lyricsUrl" target="_blank" rel="noopener">view full lyrics on WikiMezmur</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Made as a fan tribute. Data sourced from Ethiopian Gospel Music and WikiMezmur.</p>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
