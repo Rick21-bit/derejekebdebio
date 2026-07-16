@@ -13,7 +13,22 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <canvas id="visualizer"></canvas>
+
+  <div id="enter-overlay" class="enter-overlay">
+    <div class="enter-card">
+      <h2>Dr. Dereje Kebede</h2>
+      <p>Ethiopian Gospel Music</p>
+      <button id="enter-btn" class="enter-btn">Enter with music</button>
+    </div>
+  </div>
+
   <div id="app">
+    <div id="audio-control" class="audio-control">
+      <button id="mute-btn" class="mute-btn">🔊 Mute</button>
+      <span id="track-label" class="track-label"></span>
+    </div>
+
     <header class="hero">
       <div class="hero-content">
         <h1>ዶ/ር ደረጀ ከበደ</h1>
@@ -48,6 +63,6 @@
   </div>
 
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="app.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>

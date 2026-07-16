@@ -1,4 +1,10 @@
+import { createAudio } from './js/audio.js';
+import { createVisualizer } from './js/visualizer.js';
+
 const { createApp, ref } = Vue;
+const audio = createAudio();
+const visualizer = createVisualizer(audio.element, 'visualizer');
+document.body.appendChild(audio.element);
 
 createApp({
   setup() {
@@ -46,3 +52,27 @@ createApp({
     return { bio, albums };
   }
 }).mount('#app');
+
+function initMedia() {
+  const overlay = document.getElementById('enter-overlay');
+  const enterBtn = document.getElementById('enter-btn');
+  const muteBtn = document.getElementById('mute-btn');
+  const trackLabel = document.getElementById('track-label');
+
+  if (!overlay || !enterBtn) return;
+
+  trackLabel.textContent = audio.currentLabel();
+
+  enterBtn.addEventListener('click', async () => {
+    overlay.classList.add('hidden');
+    await audio.play();
+    visualizer.start();
+  });
+
+  muteBtn.addEventListener('click', () => {
+    const muted = audio.toggleMute();
+    muteBtn.textContent = muted ? '🔇 Unmute' : '🔊 Mute';
+  });
+}
+
+initMedia();
